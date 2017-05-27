@@ -14,9 +14,9 @@ module.exports = {
   },
   module : {
     rules: [
+      { include: APP_DIR },
       {
         test: /\.jsx?/,
-        include: APP_DIR,
         use: [{
           loader: "babel-loader",
           options: {
@@ -24,12 +24,20 @@ module.exports = {
           }
         }]
       },
+      // {
+      //   test: /\.css$/,
+      //   include: APP_DIR,
+      //   use: [
+      //     { loader: "style-loader" },
+      //     { loader: "css-loader" }
+      //   ]
+      // },
       {
-        test: /\.css$/,
-        include: APP_DIR,
+        test: /\.s?css$/,
         use: [
           { loader: "style-loader" },
-          { loader: "css-loader" }
+          { loader: "css-loader" },
+          { loader: "sass-loader" }
         ]
       }
     ]
