@@ -1,10 +1,10 @@
 const path = require('path');
 
-const APP_DIR = path.resolve(__dirname, 'app');
-const BUILD_DIR = path.resolve(__dirname, 'dist');
+const APP_DIR = path.resolve(__dirname, 'src/app/');
+const BUILD_DIR = path.resolve(__dirname, 'dist/');
 
 module.exports = {
-  entry: './app',
+  entry: APP_DIR,
   output: {
     filename: 'bundle.js',
     path: BUILD_DIR
@@ -24,16 +24,9 @@ module.exports = {
           }
         }]
       },
-      // {
-      //   test: /\.css$/,
-      //   include: APP_DIR,
-      //   use: [
-      //     { loader: "style-loader" },
-      //     { loader: "css-loader" }
-      //   ]
-      // },
       {
         test: /\.s?css$/,
+        include: path.resolve(APP_DIR, '../style'),
         use: [
           { loader: "style-loader" },
           { loader: "css-loader" },
